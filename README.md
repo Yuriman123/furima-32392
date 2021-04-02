@@ -1,18 +1,16 @@
 
 ## user
 
-| Column          | type   | Options     | 
-| --------------- | ------ | ----------- | 
-| nickname        | string | null: false | 
-| emaile          | string | null: false | 
-| password        | string | null: false | 
-| firstname       | string | null: false | 
-| familyname      | string | null: false | 
-| firstname_kana  | string | null: false | 
-| familyname_kana | string | null: false | 
-| birthday_year   | date   | null: false | 
-| birthday_month  | date   | null: false | 
-| birthday_day    | date   | null: false | 
+| Column             | type   | Options     | 
+| ------------------ | ------ | ----------- | 
+| nickname           | string | null: false | 
+| email              | string | null: false | 
+| encrypted_password | string | null: false | 
+| firstname          | string | null: false | 
+| familyname         | string | null: false | 
+| firstname_kana     | string | null: false | 
+| familyname_kana    | string | null: false | 
+| birthday           | date   | null: false | 
 
 ### Association
 - has_many :items
@@ -22,18 +20,17 @@
 
 ## items
 
-| Column          | type           | Options     | 
-| --------------- | -------------- | ----------- | 
-| image           | ActiveStorage  | null: false | 
-| itemname        | string         | null: false | 
-| explanation     | text           | null: false | 
-| category        | integer        | null: false | 
-| status          | integer        | null: false | 
-| delivery_burden | integer        | null: false | 
-| area            | integer        | null: false | 
-| shipping_days   | integer        | null: false | 
-| price           | string         | null: false | 
-| user_id         | references     |             | 
+| Column             | type           | Options     | 
+| ------------------ | -------------- | ----------- | 
+| itemname           | string         | null: false | 
+| explanation        | text           | null: false | 
+| category_id        | integer        | null: false | 
+| status_id          | integer        | null: false | 
+| delivery_burden_id | integer        | null: false | 
+| area_id            | integer        | null: false | 
+| shipping_days_id   | integer        | null: false | 
+| price              | string         | null: false | 
+| user_id            | references     |             | 
 
 ### Association
 - has_many :baylog
