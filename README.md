@@ -1,16 +1,17 @@
 
 ## users
 
-| Column             | type   | Options     | 
-| ------------------ | ------ | ----------- | 
-| nickname           | string | null: false | 
-| email              | string | unique:true | 
-| encrypted_password | string | null: false | 
-| firstname          | string | null: false | 
-| familyname         | string | null: false | 
-| firstname_kana     | string | null: false | 
-| familyname_kana    | string | null: false | 
-| birthday           | date   | null: false | 
+| Column             | type      | Options                 | 
+| ------------------ | --------- | ----------------------- | 
+| nickname           | string    | null: false             | 
+| email              | string    | unique:true, null: false| 
+| encrypted_password | string    | null: false             | 
+| firstname          | string    | null: false             | 
+| familyname         | string    | null: false             | 
+| firstname_kana     | string    | null: false             | 
+| familyname_kana    | string    | null: false             | 
+| birthday           | date      | null: false             | 
+| user_id            | references|                         |
 
 ### Association
 - has_many :items
@@ -28,7 +29,7 @@
 | delivery_burden_id | integer        | null: false      | 
 | area_id            | integer        | null: false      | 
 | shipping_days_id   | integer        | null: false      |
-| price_id           | integer        | null: false      | 
+| price              | integer        | null: false      | 
 
 ### Association
 - has_one :baylogs
@@ -45,11 +46,10 @@
 | address3 | string     | null: false | 
 | building | string     |             | 
 | tell     | string     | null: false | 
-| user_id  | references |             |  
 
 ### Association
-- belongs_to :users
-- belongs_to :baylogs
+- belongs_to :user
+- belongs_to :baylog
 
 
 ## baylogs
@@ -60,6 +60,6 @@
 | item                | references | foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
-- has_one :mailingaddresses
+- has_one :user
+- has_one :item
+- has_one :mailingaddres
