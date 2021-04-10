@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence:true
   validates :email, presence:true
-  validates :encryed_password, presence:true
+  validates :password, presence:true
   validates :firstname, presence:true
   validates :familyname, presence:true
   validates :firstname_kana, presence:true
