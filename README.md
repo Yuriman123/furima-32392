@@ -1,70 +1,66 @@
-## user
 
-| Column          | type   | Options     | 
-| --------------- | ------ | ----------- | 
-| nickname        | string | null: false | 
-| emaile          | string | null: false | 
-| password        | string | null: false | 
-| firstname       | string | null: false | 
-| familyname      | string | null: false | 
-| firstname_kana  | string | null: false | 
-| familyname_kana | string | null: false | 
-| birthday_year   | date   | null: false | 
-| birthday_month  | date   | null: false | 
-| birthday_day    | date   | null: false | 
+## users
+
+| Column             | type      | Options                 | 
+| ------------------ | --------- | ----------------------- | 
+| nickname           | string    | null: false             | 
+| email              | string    | unique:true, null: false| 
+| encrypted_password | string    | null: false             | 
+| firstname          | string    | null: false             | 
+| familyname         | string    | null: false             | 
+| firstname_kana     | string    | null: false             | 
+| familyname_kana    | string    | null: false             | 
+| birthday           | date      | null: false             | 
 
 ### Association
 - has_many :items
-- has_many :baylog
-- has_one :mailingaddress
+- has_many :baylogs
 
 
 ## items
 
-| Column          | type           | Options     | 
-| --------------- | -------------- | ----------- | 
-| image           | ActiveStorage  | null: false | 
-| itemname        | string         | null: false | 
-| explanation     | text           | null: false | 
-| category        | integer        | null: false | 
-| status          | integer        | null: false | 
-| delivery_burden | integer        | null: false | 
-| area            | integer        | null: false | 
-| shipping_days   | integer        | null: false | 
-| price           | string         | null: false | 
-| user_id         | references     |             | 
+| Column             | type           | Options          | 
+| ------------------ | -------------- | ---------------- | 
+| name               | string         | null: false      | 
+| explanation        | text           | null: false      | 
+| category_id        | integer        | null: false      | 
+| status_id          | integer        | null: false      | 
+| delivery_burden_id | integer        | null: false      | 
+| area_id            | integer        | null: false      | 
+| shipping_day_id    | integer        | null: false      |
+| price              | integer        | null: false      | 
+| user               | references     | foreign_key: true| 
 
 ### Association
-- has_many :baylog
-- has_one :user
+- has_one :baylog
+- belongs_to :user
 
 
-## mailingaddress
+## mailingaddresses
 
-| Column   | type       | Options     | 
-| -------- | ---------- | ----------- | 
-| postno   | string     | null: false | 
-| address1 | string     | null: false | 
-| address2 | string     | null: false | 
-| address3 | string     | null: false | 
-| building | string     |             | 
-| tell     | string     | null: false | 
-| user_id  | references |             |  
+| Column      | type       | Options           | 
+| ----------- | ---------- | ----------------- | 
+| postno      | string     | null: false       | 
+| area_id     | integer    | null: false       | 
+| address     | string     | null: false       | 
+| street      | string     | null: false       | 
+| building    | string     |                   | 
+| tell        | string     | null: false       | 
+| baylog      | references | foreign_key: true | 
+
+### Association
+- belongs_to :baylog
+
+
+
+## baylogs
+
+| Column              | type       | Options           | 
+| ------------------- | ---------- | ----------------- | 
+| user                | references | foreign_key: true | 
+| item                | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_many :baylog
-
-
-## baylog
-
-| Column            | type       | Options | 
-| ----------------- | ---------- | ------- | 
-| user_id           | references |         | 
-| item_id           | references |         | 
-| mailingaddress_id | references |         | 
-|                   |            |         | 
-### Association
-- has_one :user
-- has_one :items
+- belongs_to :item
 - has_one :mailingaddress
