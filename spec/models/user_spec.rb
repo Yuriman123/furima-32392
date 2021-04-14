@@ -74,6 +74,16 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors[:password]).to include "is invalid"
       end
+      it 'passwordが数字のみでは登録できないこと' do
+        @user.password= '11111111'
+        @user.valid?
+        expect(@user.errors[:password]).to include "is invalid"
+      end
+      it 'passwordが全角では登録できないこと' do
+        @user.password= 'あああああああ'
+        @user.valid?
+        expect(@user.errors[:password]).to include "is invalid"
+      end
       it '重複したemailが存在する場合登録できない' do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)

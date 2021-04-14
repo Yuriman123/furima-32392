@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates :password,format:{with:PASSWORD_REGEX}
   validates :nickname
-  validates :email, uniqueness: { case_sensitive: true }
+  validates :email
   validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥々一]+\z/, message: 'に全角文字を使用してください' }
   validates :familyname, format: { with: /\A[ぁ-んァ-ン一-龥々一]+\z/, message: 'に全角文字を使用してください' }
   validates :firstname_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
