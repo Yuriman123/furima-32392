@@ -1,18 +1,21 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :area
+
   has_one_attached :image
+
   with_options presence: true do
 
-    validates :nickname,         null:false
-    validates :explanation,      null:false
-    validates :category_id,      null:false
-    validates :status_id,        null: false
-    validates :delivery_burden_id, null: false
-    validates :area_id,          null: false
-    validates :shipping_day_id,  null: false
-    validates :price,            null: false
+    validates :nickname
+    validates :explanation
+    validates :category_id
+    validates :status_id
+    validates :delivery_burden_id
+    validates :shipping_day_id
+    validates :price
   end
-
-    validates :user,          foreign_key: true
+    validates :area_id, numericality: { other_than: 1 } 
+    validates :user
 
 
 end
