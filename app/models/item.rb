@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :price
   end
     validates :area_id, numericality: { other_than: 1 } 
-    validates :user
+    # validates :user
 
 
 end
