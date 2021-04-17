@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   with_options presence: true do
 
     validates :name
-    validates :explanation
+    validates :explanation,length: { maximum:1000 }
     validates :image
 
 

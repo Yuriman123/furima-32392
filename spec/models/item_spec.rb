@@ -29,6 +29,11 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include "Name can't be blank"
     end
     it '商品の説明がないと登録できない' do
+      @item.explanation  = ('a'*10001)
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Explanation is too long (maximum is 1000 characters)"
+    end
+    it '商品の説明が１０００文字超えると登録できない' do
       @item.explanation  =''
       @item.valid?
       expect(@item.errors.full_messages).to include "Explanation can't be blank"

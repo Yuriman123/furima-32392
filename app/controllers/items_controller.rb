@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
    @item = Item.new(item_params)
    if @item.save  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
     redirect_to root_path
-    #controller: :items, action: :index
    else
     render "new"
    end
