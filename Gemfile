@@ -68,4 +68,6 @@ end
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
-gem 'aker'
+gem 'faker'
+gem "factory_bot_rails"
+gem 'pry-rails'
