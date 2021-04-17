@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     validates :name
     validates :explanation
 
-    validates :image,              numericality: { other_than: 1 } 
+    validates :image
     validates :category_id,        numericality: { other_than: 1 } 
     validates :status_id,          numericality: { other_than: 1 } 
     validates :delivery_burden_id, numericality: { other_than: 1 } 

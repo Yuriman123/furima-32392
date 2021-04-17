@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
   def create
    @item = Item.new(item_params)
    if @item.save  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
-    redirect_to controller: :items, action: :index
+    redirect_to root_path
+    #controller: :items, action: :index
    else
     render "new"
    end
@@ -20,7 +21,8 @@ class ItemsController < ApplicationController
   
   private
   def item_parmas
-    params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
+  def item_params
+    params.require(:item).permit(:name,:explanation,:price,:image,:area_id,:category_id,:status_id, :delivery_burden_id,:shipping_day_id).merge(user_id: current_user.id)
   end
 
 
