@@ -3,21 +3,21 @@ class Item < ApplicationRecord
     belongs_to :area,:category,:status,:elivery_burden,:shipping_day
    has_one_attached :image
 
-  with_options presence: true do
+   with_options presence: true do
+      validates :name
+      validates :explanation,length: { maximum:1000 }
+      validates :image
+   end
 
-    validates :name
-    validates :explanation,length: { maximum:1000 }
-    validates :image
-
-
+   with_options numericality: { other_than: 1 }  do
+    validates :category_id
+    validates :status_id
+    validates :delivery_burden_id
+    validates :shipping_day_id
+    validates :area_id
   end
-  validates :category_id,        numericality: { other_than: 1 } 
-  validates :status_id,          numericality: { other_than: 1 } 
-  validates :delivery_burden_id, numericality: { other_than: 1 } 
-  validates :shipping_day_id,    numericality: { other_than: 1 } 
-  validates :area_id,            numericality: { other_than: 1 } 
-  validates :price, inclusion: { in: 300..9_999_999 },format: { with: /\A[0-9]+\z/} 
 
+    validates :price, inclusion: { in: 300..9_999_999 },format: { with: /\A[0-9]+\z/} 
 
 
 end

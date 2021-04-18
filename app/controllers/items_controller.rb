@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!,except:[:index]
+
 
   def index
-    @area = Area.order("created_at DESC")
-    @items = Item.all
   end
 
   def new
