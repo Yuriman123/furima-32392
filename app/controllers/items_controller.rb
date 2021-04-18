@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
 
   def index
+    @items = Item.all.includes(:item)
   end
 
   def new
@@ -10,12 +11,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-   @item = Item.new(item_params)
-   if @item.save  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
-    redirect_to root_path
+    @item = Item.new(item_params)
+    if @item.save  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
+     redirect_to root_path
    else
-    render "new"
+     render "new"
    end
+
+  def show
+    @item = Item.find(params[:id])
+  end 
+
   end
   
   private
