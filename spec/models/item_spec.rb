@@ -106,8 +106,6 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price is not included in the list"
     end
-    it '入力された販売価格によって、販売手数料や販売利益の表示が変わる' do
-    end
 
   end
 end
