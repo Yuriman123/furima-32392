@@ -1,7 +1,12 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :area,:category,:status,:elivery_burden,:shipping_day
+   belongs_to :area
+   belongs_to :category
+   belongs_to :status
+   belongs_to :shipping_day
+   belongs_to :delivery_burden
    has_one_attached :image
+   belongs_to :user
 
    with_options presence: true do
       validates :name

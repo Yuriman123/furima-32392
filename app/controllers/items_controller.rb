@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.all.includes(:item)
+    @items = Item.includes(:user)
   end
 
   def new
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
    end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find(item_params[:id])
   end 
 
   end
