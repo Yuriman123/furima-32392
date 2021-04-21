@@ -15,21 +15,47 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render 'new'
+    end
   end
 
   def show
-    @item = Item.find(item_params[:id])
+    @item = Item.find(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
-end
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
 
+  def destroy
+  end
+
+  
+  #  参考資料 
+  # def update
+  #   if@prototype.update(prototype_params)
+  #    redirect_to prototype_path(@prototype)
+  #    else
+  #      render :edit
+  #    end
+
+   
+
+
+  
   private
-
+  
   def item_params
     params.require(:item).permit(:name, :explanation, :price, :image, :area_id, :category_id, :status_id, :delivery_burden_id,
-                                 :shipping_day_id).merge(user_id: current_user.id)
+      :shipping_day_id).merge(user_id: current_user.id)
   end
 end
+  
