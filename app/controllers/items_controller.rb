@@ -24,18 +24,18 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # def edit
-  #   @item = Item.find(params[:id])
-  # end
+  def edit
+    @item = Item.find(params[:id])
+  end
 
-  # def update
-  #   @item = Item.find(params[:id])
-  #   if @item.update(item_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   # end
@@ -57,5 +57,5 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-  
+
 end
