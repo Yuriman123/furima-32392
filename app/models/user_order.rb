@@ -11,8 +11,9 @@ class UserOrder
   end
   
  def save
+  # binding.pry
     order = Order.create(user_id: user_id, item_id: item_id)
-    mailingaddress = Mailingaddress.create(postno: postno, area_id: area_id, address: address, street: street, building: building, tell: tell)
+    mailingaddress = Mailingaddress.create(postno: postno, area_id: area_id, address: address, street: street, building: building, tell: tell, order_id: order.id)
  end
 
 
