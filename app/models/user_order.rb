@@ -3,12 +3,12 @@ class UserOrder
   attr_accessor :postno, :area_id, :address, :street, :building, :tell,:image, :building, :item_id,:user_id,:token
 
   with_options presence: true do
-    validates :postno
-    validates :area_id
+    validates :postno, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :area_id, numericality: { other_than: 1 } 
     validates :address
     validates :street
-    validates :tell
-    validates :token
+    validates :tell, format: { with: /\A[a-zA-Z0-9]+\z/ }
+    validates :token, format: { with: /\A[a-zA-Z0-9]+\z/ }
 
   end
   

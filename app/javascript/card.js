@@ -15,7 +15,6 @@ const pay = () => {
       exp_year: `20${formData.get("user_order[exp_year]")}`,
     };
     Payjp.createToken(card, (status, response) => {
-      debugger
       if (status == 200) {
         const token = response.id;
         console.log(token)
