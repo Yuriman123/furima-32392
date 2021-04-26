@@ -74,7 +74,11 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include "Tell is invalid"
       end
-
+      it '電話番号が１１桁以上だと保存できない' do
+        @user_order.tell = 11111111111111111111111
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include "Tell must be less than or equal to 11"
+      end
     end
 
 

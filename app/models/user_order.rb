@@ -7,15 +7,13 @@ class UserOrder
     validates :area_id, numericality: { other_than: 1 } 
     validates :address, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
     validates :street, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-    validates :tell, format: { with: /\A[a-zA-Z0-9]+\z/ }
+    validates :tell, format: { with: /\A[0-9]+\z/ },  numericality: {less_than_or_equal_to: 11}
     validates :token, format: { with: /\A[a-zA-Z0-9]+\z/ }
 
   end
   
  def save
-  # binding.pry
     order = Order.create(user_id: user_id, item_id: item_id)
-    # pay = Pay .create(price: price,token: token)
     mailingaddress = Mailingaddress.create(postno: postno, area_id: area_id, address: address, street: street, building: building, tell: tell, order_id: order.id)
  end
 

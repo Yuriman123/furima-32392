@@ -34,9 +34,6 @@ private
     params.require(:user_order).permit(:postno,:area_id,:address,:street,:tell, :building).merge(user_id: current_user.id,item_id: params[:item_id],token: params[:token] )
   end
 
-  # def order_params
-  #   params.require(:order).permit(:price).merge(token: params[:token])
-  #   end
 
   def pay_item
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
