@@ -12,6 +12,23 @@ RSpec.describe UserOrder, type: :model do
     end
 
     context '登録ができない' do
+
+      it "priceとtokenがあれば保存ができること" do
+        expect(@user_order).to be_valid
+      end
+    
+      it "priceが空では登録できないこと" do
+        @user_order.price = nil
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Price can't be blank")
+      end
+    
+      it "tokenが空では登録できないこと" do
+        @user_order.token = nil
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Token can't be blank")
+      end
+
       it 'postnoが空だと保存できないこと' do
         @user_order.postno = ''
         @user_order.valid?
@@ -35,7 +52,7 @@ RSpec.describe UserOrder, type: :model do
       it 'tellが空だと保存できないこと' do
         @user_order.tell = ''
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include "Tell can't be blank"
+        expect(@user_order.errors.full_messages).to include ""
       end
       it 'nicknameが半角でないと保存できないこと' do
       end
@@ -61,5 +78,4 @@ RSpec.describe UserOrder, type: :model do
       end
     end
   end
-
 end

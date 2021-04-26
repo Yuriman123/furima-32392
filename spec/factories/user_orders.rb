@@ -5,5 +5,7 @@ FactoryBot.define do
     address{ '埼玉' }
     street{ '所沢市' }
     tell { '000-1111-2222' }
+    price {3000}
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
