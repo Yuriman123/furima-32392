@@ -7,7 +7,7 @@ class UserOrder
     validates :area_id, numericality: { other_than: 1 } 
     validates :address, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
     validates :street
-    validates :tell, format: { with: /\A[0-9]+\z/ },  numericality: {less_than_or_equal_to: 11}
+    validates :tell, format: { with: /\A\d{10,11}\z/ }
     validates :token
   end
   

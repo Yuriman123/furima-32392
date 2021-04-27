@@ -9,6 +9,11 @@ RSpec.describe UserOrder, type: :model do
       it '全ての情報があれば出品できる' do
         @user_order= FactoryBot.build(:user_order)
       end
+      it '電話番号が１１桁だと登録できる' do
+      @user_order.tell= '12345678901'
+      expect(@user_order).to be_valid
+      end
+
     end
 
    context '登録ができない' do
@@ -72,7 +77,7 @@ RSpec.describe UserOrder, type: :model do
       it '電話番号が１１桁以上だと保存できない' do
         @user_order.tell = 11111111111111111111111
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include "Tell must be less than or equal to 11"
+        expect(@user_order.errors.full_messages).to include  "Tell is invalid"
       end
     end
 
