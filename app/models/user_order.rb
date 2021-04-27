@@ -8,8 +8,7 @@ class UserOrder
     validates :address, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
     validates :street, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
     validates :tell, format: { with: /\A[0-9]+\z/ },  numericality: {less_than_or_equal_to: 11}
-    validates :token, format: { with: /\A[a-zA-Z0-9]+\z/ }
-
+    validates :token, format:
   end
   
  def save
