@@ -1,8 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index,:create]
+  before_action :authenticate_user!
+  # before_action :move_to_index, only: [:index]
 
 
 def index
+  sould_out
+  redirect_user
   @user_order = UserOrder.new
   @item= Item.find(params[:item_id])
 end
@@ -42,4 +46,19 @@ private
       card: address_parms[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+
+  def redirect_user
+    if current_user.id == @item.user.id 
+     
+      redirect_to root_path
+     end
+  end
+
+  def sould_out
+    if @item.order != nil
+    redirect_to root_path
+    end
+
   end

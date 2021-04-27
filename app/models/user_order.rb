@@ -6,9 +6,9 @@ class UserOrder
     validates :postno, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :area_id, numericality: { other_than: 1 } 
     validates :address, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
-    validates :street, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
+    validates :street
     validates :tell, format: { with: /\A[0-9]+\z/ },  numericality: {less_than_or_equal_to: 11}
-    validates :token, format:
+    validates :token
   end
   
  def save
