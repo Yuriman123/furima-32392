@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
 
 
 def index
-  redirect_user
   @user_order = UserOrder.new
   @item= Item.find(params[:item_id])
+  redirect_user
 end
 
 
@@ -49,14 +49,15 @@ private
 
   def redirect_user
     if current_user.id == @item.user.id 
-      @item.order != nil
       redirect_to root_path
+    else
+      @item.order != nil
+      render :index
      end
   end
 
   # def sould_out
-  #   if 
+  #   if  @item.order != nil
   #   redirect_to root_path
   #   end
-
   # end
