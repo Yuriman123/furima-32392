@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UserOrder, type: :model do
     before do
+      user = FactoryBot.build(:user)
+      item = FactoryBot.build(:item)
       @user_order = FactoryBot.build(:user_order)
     end
 
@@ -10,10 +12,13 @@ RSpec.describe UserOrder, type: :model do
         @user_order= FactoryBot.build(:user_order)
       end
       it '電話番号が１１桁だと登録できる' do
-      @user_order.tell= '12345678901'
-      expect(@user_order).to be_valid
+        @user_order.tell= '12345678901'
+        expect(@user_order).to be_valid
       end
-
+      it '建物名が空でも登録できる' do
+        @user_order.building = ''
+        expect(@user_order).to be_valid
+      end
     end
 
    context '登録ができない' do
@@ -23,7 +28,16 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Token can't be blank")
       end
-
+      it "user_idが空では登録できないこと" do
+        @user_order.user_id = ''
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idが空では登録できないこと" do
+        @user_order.item_id = ''
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Item can't be blank")
+      end
       it 'postnoが空だと保存できないこと' do
         @user_order.postno = ''
         @user_order.valid?
