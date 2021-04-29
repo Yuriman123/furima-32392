@@ -79,6 +79,7 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include "Street can't be blank"
       end
+      
       it 'tellが空だと保存できないこと' do
         @user_order.tell = ''
         @user_order.valid?
