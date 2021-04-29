@@ -84,6 +84,11 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include "Tell can't be blank"
       end
+      it '英数混合では登録できないこと' do
+        @user_order.tell = '11aaaaaaaaa'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include "Tell is invalid"
+      end
       it '電話番号に半角以外入っていると保存できないこと' do
         @user_order.tell = 'あああああ'
         @user_order.valid?
