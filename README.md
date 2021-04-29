@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :items
-- has_many :orders
+- has_many :baylogs
 
 
 ## items
@@ -32,7 +32,7 @@
 | user               | references     | foreign_key: true| 
 
 ### Association
-- has_one :order
+- has_one :baylog
 - belongs_to :user
 
 
@@ -46,14 +46,14 @@
 | street      | string     | null: false       | 
 | building    | string     |                   | 
 | tell        | string     | null: false       | 
-| order       | references | foreign_key: true | 
+| baylog      | references | foreign_key: true | 
 
 ### Association
-- belongs_to :order
+- belongs_to :baylog
 
 
 
-## orders
+## baylogs
 
 | Column              | type       | Options           | 
 | ------------------- | ---------- | ----------------- | 
