@@ -18,11 +18,7 @@ def create
     @item.order != nil 
     render :index
   end
-end
-
-
-
-
+ end
 end
 
 private

@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      @item.order.presence
       redirect_to root_path
     else
       render :edit
