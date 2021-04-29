@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index,:create]
+  before_action :redirect_user, only: [:index]
   before_action :authenticate_user!
 
 
 def index
-  redirect_user
+
   @user_order = UserOrder.new
 end
 
