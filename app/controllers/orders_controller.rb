@@ -8,17 +8,17 @@ def index
   @user_order = UserOrder.new
 end
 
-
 def create
-  @user_order = UserOrder.new(address_parms)
-   if @user_order.valid?  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
-    pay_item   
-    @user_order.save
+    @user_order = UserOrder.new(address_parms)
+    if @user_order.valid?  # create = new + save   Item.createは、@item = Item.new(item_params) →@item.saveと同義
+      pay_item
+      @user_order.save
 
-    @item.order != nil 
-    render :index
+      redirect_to root_path
+    else
+      render :index
+    end
   end
- end
 end
 
 private
