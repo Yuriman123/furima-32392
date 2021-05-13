@@ -72,3 +72,4 @@ gem 'faker'
 gem "factory_bot_rails"
 gem 'pry-rails'
 gem 'payjp'
+gem "aws-sdk-s3", require: false
