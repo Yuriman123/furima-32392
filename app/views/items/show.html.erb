@@ -28,16 +28,16 @@
       </span>
     </div>
 
-  <% if user_signed_in? && @item.order == nil  %> 
+  <%# <% if user_signed_in? && @item.order == nil  %>  %>
   <%# empty?は配列が存在している状態に使う空というイメージ、 nillは無の状態 %>
-    <% if current_user.id == @item.user_id %>
+    <%# <% if current_user.id == @item.user_id %> %>
         <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除",  item_path(@item), method: :delete, class:"item-destroy" %>
-     <% else %>
+     <%# <% else %> %>
         <%= link_to "購入画面に進む",  item_orders_path(@item[:id]),class:"item-red-btn"%>
-    <% end %>
-  <% end %>
+    <%# <% end %> %>
+  <%# <% end %> %>
 
     <div class="item-explain-box">
       <span><%= @item.explanation%></span>
